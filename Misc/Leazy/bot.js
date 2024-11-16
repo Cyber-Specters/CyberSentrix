@@ -57,8 +57,8 @@ function genFlag(start, end) {
     ) {
       return console.error("Not must be same as the default start or end");
     }
-    buffer = rInBUF(buffer, DEFUALT_START, startToEnd(start));
-    buffer = rInBUF(buffer, DEFAULT_END, startToEnd(end));
+    buffer = rInBUF(buffer, startToEnd(DEFUALT_START),startToEnd(start));
+    buffer = rInBUF(buffer, startToEnd(DEFAULT_END), startToEnd(end));
     fs.writeFile(tmpFile, buffer, (err) => {
       if (err) {
         console.error("Error write idk why tho : ", err);

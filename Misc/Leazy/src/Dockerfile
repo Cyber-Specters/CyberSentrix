@@ -1,21 +1,36 @@
-FROM node:18-alpine
+FROM ubuntu:22.04
 
-
-RUN apk add --no-cache \
+# Update and install system dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
     g++ \
-    cairo-dev \
-    libjpeg-turbo-dev \
-    pango-dev \
-    giflib-dev \
-    pixman-dev \
     make \
     python3 \
-    py3-pip \
-    pkgconfig
+    python3-pip \
+    pkg-config \
+    libcairo2-dev \
+    libjpeg-dev \
+    libpango1.0-dev \
+    libgif-dev \
+    libpixman-1-dev \
+    fontconfig \
+    ttf-mscorefonts-installer \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
 
+# Install Node.js (replace with your desired version)
+RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
+    apt-get install -y nodejs && \
+    npm install -g npm@latest && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# Set working directory
 WORKDIR /app
 
+# Copy package files and install dependencies
 COPY package*.json ./
 RUN npm install
+
+# Copy project files
 COPY . .
-CMD ["npm", "run", "start"]
+
+# Command to run the application
+CMD ["node", "bot.js"]

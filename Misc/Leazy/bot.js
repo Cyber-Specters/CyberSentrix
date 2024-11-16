@@ -61,12 +61,8 @@ function genFlag(start, end) {
     buffer = rInBUF(buffer, DEFAULT_END, startToEnd(end));
     fs.writeFile(tmpFile, buffer, (err) => {
       if (err) {
-        console.error("Error writing flag image to file:", err);
-      } else {
-        console.log(
-          "Flag image successfully written to file with modifications."
-        );
-      }
+        console.error("Error write idk why tho : ", err);
+      } 
     });
   } catch (error) {
     console.error("Error processing buffer:", error.message);
@@ -86,9 +82,7 @@ app.get("/render", (req, res) => {
     console.log(realclientip);
     res.status(401).send("Unauthorized");
     return;
-  } else {
-    console.log(`authorized ip : ${realclientip}`);
-  }
+  } 
   const download = req.query.download;
 
   if (download === "true") {
@@ -108,9 +102,7 @@ app.get("/render", (req, res) => {
         res.end(buffer, () => {
           fs.unlink(tmpFile, (unlinkErr) => {
             if (unlinkErr) {
-              console.error("Error deleting flag file:", unlinkErr);
-            } else {
-              console.log("Flag file successfully deleted.");
+              console.error("something error when delet");
             }
           });
         });
@@ -122,5 +114,6 @@ app.get("/render", (req, res) => {
 });
 
 app.listen(port, () => {
+  console.log(`authorized ip : ${AUTHORIZED_IP}`);
   console.log(`Example app listening on port ${port}`);
 });

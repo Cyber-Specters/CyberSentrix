@@ -10,4 +10,4 @@ services:
     environment:
       - PORT=3000
       - FLAG=SENTRIX{BotClientSid3ReqForgery}
-      - AUTHORIZED_IP=114.125.68.248
+      - AUTHORIZED_IP="::ffff:47.245.121.0"

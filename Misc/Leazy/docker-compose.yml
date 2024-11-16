@@ -1,0 +1,13 @@
+version: "3.8"
+
+services:
+  leazy-bot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - FLAG=SENTRIX{BotClientSid3ReqForgery}
+      - AUTHORIZED_IP=114.125.68.248

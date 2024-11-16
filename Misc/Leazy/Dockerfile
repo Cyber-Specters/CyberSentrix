@@ -1,8 +1,8 @@
 FROM ubuntu:22.04
 
+# auto y pada pertanyaan
 ENV DEBIAN_FRONTEND=noninteractive
 
-# Install dependencies, including curl
 RUN apt-get update && apt-get install -y --no-install-recommends \
     curl \
     g++ \
@@ -19,21 +19,17 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     ttf-mscorefonts-installer \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Install Node.js (replace with your desired version)
+
 RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
     apt-get install -y nodejs && \
     npm install -g npm@latest && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Set working directory
 WORKDIR /app
 
-# Copy package files and install dependencies
 COPY package*.json ./
 RUN npm install
 
-# Copy project files
 COPY bot.js .
 
-# Command to run the application
 CMD ["node", "bot.js"]

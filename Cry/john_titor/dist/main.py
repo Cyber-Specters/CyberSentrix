@@ -1,4 +1,4 @@
-from Crypto.Util.number import getPrime, inverse, long_to_bytes
+from Crypto.Util.number import getPrime, inverse, long_to_bytes,bytes_to_long
 import random
 import time
 
@@ -16,11 +16,11 @@ def generator(x):
     p = getPrime(512)  
     q = getPrime(512)  
     e = 65537  
-    phi_n = (p - 1) * (q - 1)  
-    n = p * q  
+    phi_n = (p - 1) * (q - 1)
     n2 = (p - x) * (q - x) 
+    n = p * q  
     d = inverse(e, phi_n)  
-    return n, e, n2, d
+    return n, e,n2, d,p,q
 
 def menu():
     return """
@@ -33,14 +33,15 @@ def menu():
 def main():
     signature = b'John_Titor_Administrator_Time_Machine'  
     while True:
-        next_random = cook() 
-        n, e, n2, d = generator(next_random)  
+        next_random = cook()
+        n, e,n2, d,p,q = generator(next_random)  
         key, value = random.choice(list(soal.items()))
         end = 15
         s = time.time()
         soalan = input(f"{key}")
         ended = time.time() - s
         if (ended< end) and (soalan == value):
+            s = time.time()
             print(f"""
 {menu()}
 n = {n}
@@ -48,9 +49,11 @@ e = {e}
 n2 = {n2}
 """)
             us = input("choose> ")
-            if us == '1':
-                print(next_random)
-            elif us == '2':
+            ended = time.time() - s
+            nr = next_random
+            if (ended < end) and (us == '1'):
+                print(nr)
+            elif (ended < end) and (us == '2'):
                 verify_sig = input("verify#> ")
                 verify_sig = pow(bytes_to_long(signature), 65537, next_random)
                 if verify_sig == pow(bytes_to_long(signature),65537,next_random):
@@ -61,4 +64,3 @@ n2 = {n2}
             print("Time Limit or the Answer is Incorrect")
 if __name__ == "__main__":
     main()
-

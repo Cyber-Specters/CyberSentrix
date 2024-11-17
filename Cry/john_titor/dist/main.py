@@ -52,12 +52,13 @@ n2 = {n2}
                 print(next_random)
             elif us == '2':
                 verify_sig = input("verify#> ")
-                verify_sig = long_to_bytes(pow(int(verify_sig), d, n))  
-                if verify_sig == signature:
-                    print(f"Confirmed as John Titor. Here is your Key: {open('flag.txt').read()}")
+                verify_sig = pow(bytes_to_long(signature), 65537, next_random)
+                if verify_sig == pow(bytes_to_long(signature),65537,next_random):
+                    print(f"Confirmed as John Titor. Here is your Key: {pow(bytes_to_long(open('flag.txt').read().encode()),e,n)}")
                 else:
                     print("Signature verification failed.")
         else:
             print("Time Limit or the Answer is Incorrect")
 if __name__ == "__main__":
     main()
+

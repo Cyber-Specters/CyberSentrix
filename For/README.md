@@ -6,4 +6,4 @@ Forensic CTF challenges involve investigating and analyzing digital evidence to 
 
 | Name  | Topic           | Difficulties | Author |
 |-------|-----------------|--------------|--------|
-| exfiltrated-1 | PCAP, Network Forensic    | ICMP, HID         | [k.eii](https://github.com/jonscafe)  |
+| exfiltrated-1 | PCAP, HID Usage    | Easy         | [k.eii](https://github.com/jonscafe)  |

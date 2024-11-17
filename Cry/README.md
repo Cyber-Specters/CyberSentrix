@@ -6,4 +6,4 @@ Cryptography CTF challenges involve analyzing encrypted data, uncovering hidden 
 
 | Name  | Topic           | Difficulties | Author |
 |-------|-----------------|--------------|--------|
-| john_titor | random number predict, rsa factoring equation   | Easy         | [raphael](https://github.com/rafidghanim)  |
+| john_titor | random number predict, rsa factoring   | Easy         | [raphael](https://github.com/rafidghanim)  |

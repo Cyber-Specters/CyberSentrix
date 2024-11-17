@@ -11,7 +11,7 @@ Reverse Engineering
 ./exfiltrated-2.pcapng
 
 ## Flag:
-`NEXUS{ampun_bang_saya_takut_pcap_asli}`
+`NEXUS{exfiltrated_flag_90ae31ff45de}`
 
 ## Points:
 500

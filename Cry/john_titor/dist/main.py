@@ -54,7 +54,7 @@ n2 = {n2}
                 verify_sig = input("verify#> ")
                 verify_sig = pow(bytes_to_long(signature), 65537, next_random)
                 if verify_sig == pow(bytes_to_long(signature),65537,next_random):
-                    print(f"Confirmed as John Titor. Here is your Key: {pow(bytes_to_long(open('flag.txt').read().encode()),e,n)}")
+                    print(f"Confirmed as John Titor. Here is your Key: {open('flag.txt').read()}")
                 else:
                     print("Signature verification failed.")
         else:

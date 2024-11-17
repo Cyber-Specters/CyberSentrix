@@ -54,9 +54,11 @@ n2 = {n2}
             if (ended < end) and (us == '1'):
                 print(nr)
             elif (ended < end) and (us == '2'):
+                s = time.time()
                 verify_sig = input("verify#> ")
+                ended = time.time() - s +5
                 verify_sig = pow(bytes_to_long(signature), 65537, next_random)
-                if verify_sig == pow(bytes_to_long(signature),65537,next_random):
+                if (ended< end) and (verify_sig == pow(bytes_to_long(signature),65537,next_random)):
                     print(f"Confirmed as John Titor. Here is your Key: {open('flag.txt').read().encode().hex()}")
                 else:
                     print("Signature verification failed.")

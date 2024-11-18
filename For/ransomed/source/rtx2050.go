@@ -10,7 +10,7 @@ import (
 )
 
 func createRC4Cipher(userKey string) (*rc4.Cipher, error) {
-	key, err := base64.StdEncoding.DecodeString(userKey)
+	key, err := base64.StdEncoding.DecodeString(userKey) //biar kalian bingung oakwoawkoawkowawa
 	if err != nil {
 		return nil, fmt.Errorf("error decoding base64 key: %v", err)
 	}

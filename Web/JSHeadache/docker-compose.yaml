@@ -1,0 +1,12 @@
+version: "3.8"
+
+services:
+  web-jsheadache:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "1811:1811"
+    environment:
+      - flag=SENTRIX{i_hate_alert_and_requests}
+      - X-Auth=ThisHeaderIsNotUsefullThistJustAhintMaybeYouNeedBypassTheAutoCloseBrowser?toLoadYourWebhook?AfterThatIsReallyRandom?WHYdonTjUSTUseRandInt?

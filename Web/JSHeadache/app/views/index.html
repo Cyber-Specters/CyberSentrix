@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Headache Story by Repl</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div
+      class="container d-flex align-items-center justify-content-center vh-100"
+    >
+      <div class="text-center w-50">
+        <h1 class="mb-4">Headache JS</h1>
+        <p class="mb-3">Tell me about your headache</p>
+        <div class="mb-3">
+          <label for="headache-category" class="form-label">Category</label>
+          <input
+            id="headache-category"
+            class="form-control"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="my-headache" class="form-label">Details</label>
+          <textarea id="my-headache" class="form-control" rows="4"></textarea>
+        </div>
+        <div class="mb-3">
+          <label for="your-headache" class="form-label">Another Details</label>
+          <textarea id="your-headache" class="form-control" rows="4"></textarea>
+        </div>
+        <div class="mb-3">
+          <label for="form-label">what headache level u are:</label>
+          <input
+            id="number-selector"
+            type="number"
+            class="form-control"
+            min="1"
+            max="100"
+            step="1"
+            value="10"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="form-label">what happy level u are:</label>
+          <input
+            id="number-happy"
+            type="number"
+            class="form-control"
+            min="1"
+            max="100"
+            step="1"
+            value="10"
+          />
+        </div>
+        <button onmousedown="mouse_down()" class="btn btn-primary col-12">
+          Submit my headache
+        </button>
+      </div>
+    </div>
+
+    <script>
+      function isNumber(value) {
+        return typeof value === "number";
+      }
+      function mouse_down() {
+        var filtered_num = document.getElementById("number-selector").value;
+        var filtered_nums = document.getElementById("number-happy").value;
+        var filtered_num = DOMPurify.sanitize(filtered_num);
+        var filtered_nums = DOMPurify.sanitize(filtered_nums);
+        if (filtered_num > 1000) {
+          return alert("sorry you are not a headache master");
+        }
+        var filtered_num = filtered_num - filtered_nums;
+        if (isNumber(filtered_num) == false) {
+          return alert("sorry you are not a hacker master");
+        }
+        console.log(filtered_num);
+        var b = window.open("{{wpop}}", "poppin_a_headache");
+        var filtered_headache = document.getElementById("your-headache").value;
+        var filtered_headache = DOMPurify.sanitize(filtered_headache);
+
+        console.log(filtered_num);
+        b.document.write(`
+  <title>Headache report</title>
+  <h1>Yep, it was your problem, so your headache</h1>
+  <p id="trigger-headache">${filtered_headache}</p>
+  <p id="headache-num">${filtered_num}</p>
+  <script>
+    // alert('yep');
+    var w = null;
+    window.addEventListener('mouseup', function() {
+      if (w) return;
+      w = window.open('{{wpop}}', 'poppin_a_headache2', 'resizeable=1,menubar=0,status=1');
+    });
+    window.go = function() {
+      return document.getElementById("trigger-headache").textContent;
+    };
+    if (document.getElementById("headache-num").textContent > 1000) {
+        // alert('sukses');
+        ${filtered_headache}
+    } else {
+      console.log("you are not a headache master") 
+    }
+  <\/script>
+`);
+        function checkGoFunction() {
+          try {
+            if (typeof b.go === "function") {
+              alert("fixing headache now : ", b.go());
+              b.close();
+            } else {
+              setTimeout(checkGoFunction, 100);
+            }
+          } catch (e) {
+            console.error("Error:", e);
+          }
+        }
+        checkGoFunction();
+      }
+      (function () {
+        var w = null;
+        var winName = "Headache";
+        var winParams =
+          "status=1,menubar=0,toolbar=0,height=1152,width=2048,top=0,location=0,scrollbars=0,resizable=1,left=0";
+
+        var link = document.getElementById("trigger-link");
+        var category = document.getElementById("headache-category").value;
+        link.addEventListener(category, function () {
+          if (w) return;
+          w = window.open("{{wpop}}", winName, winParams);
+          w.resizeTo(1, 0);
+          w.moveTo(9e5, 9e5);
+        });
+      })();
+    </script>
+
+    <script
+      text="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.2.0/purify.min.js"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

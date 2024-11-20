@@ -7,3 +7,4 @@ Web challenges focus on exploiting or understanding web applications and service
 | Name   | Topic           | Difficulties | Author |
 |--------|-----------------|--------------|--------|
 | JSHeadache | 1-click xss, SSRF, RNG, url-sceme          | Medium | repl |
+| WarmupHeadache | self src xss          | Easy | repl |

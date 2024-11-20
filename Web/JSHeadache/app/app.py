@@ -20,7 +20,7 @@ import requests as request_super_faster_then_others
 
 
 secret = secrets.token_hex(20)
-app = Flask(__name__, template_folder='views')
+app = Flask(__name__, template_folder='views', static_folder='static')
 flag = os.getenv("flag") or "flag{flag}"
 
 

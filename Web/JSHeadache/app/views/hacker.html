@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Script Kiddie lu lammer cih, sok2 an ngectf</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background-color: black;
+        color: green;
+        font-family: 'Courier New', monospace;
+      }
+      .container {
+        text-align: center;
+        padding-top: 100px;
+      }
+      .ip {
+        font-size: 1.5rem;
+        color: lightgreen;
+        margin-bottom: 30px;
+      }
+      .message {
+        font-size: 1.25rem;
+        margin-top: 30px;
+      }
+      .console {
+        background-color: black;
+        color: green;
+        border: 2px solid green;
+        padding: 20px;
+        font-size: 1.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="display-4">Hacking Attempt Detected</h1>
+      <div class="ip">
+        <p>IP Address: <span class="text-light">{{ip}}</span></p>
+      </div>
+      <div class="console">
+        <p>Your ip was logged and will reported to the admins</p>
+      </div>
+      <div class="message">
+        <p>You such a script kiddie!</p>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS (optional, for components requiring JavaScript) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

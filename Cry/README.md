@@ -8,3 +8,4 @@ Cryptography CTF challenges involve analyzing encrypted data, uncovering hidden 
 |-------|-----------------|--------------|--------|
 | john_titor | random number predict   | Easy         | [raphael](https://github.com/rafidghanim)  |
 | loid_forger | Recover private exponent from a censored RSA key   |  Easy         | [raphael](https://github.com/rafidghanim)  |
+| rabun_jauh_atau_rabun_dekat? | Rabin Crypto System RSA   |  Easy         | [raphael](https://github.com/rafidghanim)  |

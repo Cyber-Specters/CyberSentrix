@@ -7,3 +7,4 @@ Reverse Engineering (Rev) challenges require participants to analyze compiled pr
 | Name   | Topic           | Difficulties | Author |
 |--------|-----------------|--------------|--------|
 | exfiltrated-2 | PCAP, C         | Easy | k.eii |
+| mwingware | pycache,square root algorithm reversing        | Easy | repl |

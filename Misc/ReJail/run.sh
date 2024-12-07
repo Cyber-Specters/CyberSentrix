@@ -1,0 +1,1 @@
+socat TCP-LISTEN:5000,reuseaddr,fork EXEC:./chall.py,stderr,pty,cfmakeraw

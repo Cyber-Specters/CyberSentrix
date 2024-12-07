@@ -5,5 +5,5 @@ services:
     restart: always
     build: .
     ports:
-      - "20037:20037"
+      - "20037:5000"
     read_only: true

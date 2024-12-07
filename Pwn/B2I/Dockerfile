@@ -18,5 +18,5 @@ RUN chmod 655 /home/part2/run.sh
 USER part2
 
 WORKDIR /home/part2
-EXPOSE 20037
+
 CMD /home/part2/run.sh

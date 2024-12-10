@@ -18,7 +18,7 @@ const dataUri = generateSync(FLAG, {
   verticalAlign: "center",
 });
 
-const AUTHORIZED_IP = process.env.AUTHORIZED_IP || "::ffff:127.0.0.1";
+const AUTHORIZED_IP = process.env.AUTHORIZED_IP || "::ffff:127.0.0.1"; // the authorized ip is the WA BOT IP
 
 function startToEnd(stORend) {
   var my_pleasure = "";

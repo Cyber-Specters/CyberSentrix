@@ -36,16 +36,16 @@ def main():
         print("gaboleh begitu bang hekel")
         exit(1)
     if any(word in user_input for word in blacklist):
-        print("gaboleh begitu bang hekel bl")
+        print("gaboleh begitu bang hekel")
         exit(1)
     if any(word in user_input for word in doubled):
-        print("gaboleh begitu bang hekel dl")
+        print("gaboleh begitu bang hekel")
         exit(1)
     if any(word in user_input for word in tripled):
-        print("gaboleh begitu bang hekel tp")
+        print("gaboleh begitu bang hekel")
         exit(1)
     if len(user_input) > version_control_n:
-        print("gaboleh begitu bang hekel len")
+        print("gaboleh begitu bang hekel")
         exit(1)
     exec(user_input, {"__builtins__": None, user_input.split(":")[-1]: repbelajar})
  

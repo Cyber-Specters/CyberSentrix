@@ -31,5 +31,6 @@ COPY package*.json ./
 RUN npm install
 
 COPY bot.js .
+COPY .env .
 
 CMD ["node", "bot.js"]

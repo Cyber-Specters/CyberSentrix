@@ -41,7 +41,7 @@ RUN npm install
 COPY bot.js .
 
 # Copy NGINX configuration file
-COPY nginx.conf /etc/nginx/nginx.conf
+COPY nginx.conf /etc/nginx/sites-enabled/nginx.conf
 
 # Expose port for both Node.js and NGINX
 EXPOSE 3000

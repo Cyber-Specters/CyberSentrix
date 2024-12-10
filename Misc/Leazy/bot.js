@@ -6,7 +6,7 @@ const path = require("path");
 const express = require("express");
 const DEFUALT_START = "PNG";
 const DEFAULT_END = "IHDR";
-const app = express();
+require('dotenv').config();
 app.use(realip.mw());
 const port = process.env.PORT || 3001;
 const FLAG = process.env.FLAG || "FLAG{EASY_CHALL_FAKEFLAG}";

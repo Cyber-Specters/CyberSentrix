@@ -3,6 +3,10 @@ FROM ubuntu:22.04
 # auto y pada pertanyaan
 ENV DEBIAN_FRONTEND=noninteractive
 
+ENV PORT=3000
+ENV FLAG=SENTRIX{BotClientSid3ReqForgery}
+ENV AUTHORIZED_IP=::ffff:47.245.121.0
+
 RUN apt-get update && apt-get install -y --no-install-recommends \
     curl \
     g++ \
@@ -31,6 +35,5 @@ COPY package*.json ./
 RUN npm install
 
 COPY bot.js .
-COPY .env .
 
 CMD ["node", "bot.js"]

@@ -9,7 +9,7 @@ const DEFAULT_END = "IHDR";
 const app = express();
 app.use(realip.mw());
 const port = process.env.PORT || 3001;
-const FLAG = process.env.FLAG || "FLAG{EASY_CHALL_FAKEFLAG}";
+const FLAG = process.env.FLAG_STATIC || "FLAG{EASY_CHALL_FAKEFLAG}";
 const dataUri = generateSync(FLAG, {
   maxWidth: 220,
   customHeight: 220,

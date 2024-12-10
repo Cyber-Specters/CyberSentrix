@@ -5,7 +5,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 # Set environment variables
 ENV PORT=3001
-ENV FLAG=SENTRIX{BotClientSid3ReqForgery}
+ENV FLAG_STATIC=SENTRIX{BotClientSid3ReqForgery}
 ENV AUTHORIZED_IP=47.245.121.0
 
 # Install dependencies

@@ -5,7 +5,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 ENV PORT=3000
 ENV FLAG=SENTRIX{BotClientSid3ReqForgery}
-ENV AUTHORIZED_IP=::ffff:47.245.121.0
+ENV AUTHORIZED_IP=47.245.121.0
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     curl \

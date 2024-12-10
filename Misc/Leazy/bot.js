@@ -77,7 +77,9 @@ app.get("/render", (req, res) => {
   if (realclientIp === AUTHORIZED_IP) {
     ctyp = req.query.ct;
   }
-  realclientip = req.socket.remoteAddress;
+  let realclientip = req.headers['x-forwarded-for']
+  ? req.headers['x-forwarded-for'].split(',')[0].trim()
+  : req.socket.remoteAddress;
   if (realclientip !== AUTHORIZED_IP) {
     console.log(realclientip);
     res.status(401).send("Unauthorized");

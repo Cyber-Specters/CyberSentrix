@@ -20,4 +20,4 @@ Web
 repl
 
 ## POC
-- coming-soon
+- ./solver.py

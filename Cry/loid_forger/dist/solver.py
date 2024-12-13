@@ -1,3 +1,6 @@
+from Crypto.PublicKey import RSA
+from Crypto.Cipher import PKCS1_OAEP
+from Crypto.Random import get_random_bytes
 from Crypto.Util.number import *
 
 with open("loid_key.pem", "r") as f:
@@ -64,5 +67,20 @@ print(f"""
 {n = }
 """)
 
-flag = bytes_to_long(open('encrypted.enc','rb').read())
-print("Flag :",long_to_bytes(pow(flag,d,n)).decode('latin-1'))
+private_key = RSA.construct((n, e, d))
+public_key = private_key.publickey()
+key_size = public_key.size_in_bytes()
+cipher_decrypt = PKCS1_OAEP.new(private_key)
+max_chunk_size = key_size - 42  
+
+with open('encrypted', 'rb') as dec:
+    encrypted_data = dec.read()
+
+decrypted_data = b""
+encrypted_chunk_size = key_size
+for i in range(0, len(encrypted_data), encrypted_chunk_size):
+    chunk = encrypted_data[i:i + encrypted_chunk_size]
+    decrypted_data += cipher_decrypt.decrypt(chunk)
+
+with open('decrypted.png', 'wb') as haha:
+    haha.write(decrypted_data)

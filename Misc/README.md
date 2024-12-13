@@ -8,3 +8,4 @@ Miscellaneous (Misc) challenges encompass a wide range of puzzles that don't fit
 |--------|-----------------|--------------|--------|
 | Leazy | Baileys, SSRF, Png Structure, UTF-8 Encoding          | Easy | repl |
 | ReJail | Pyjail,buiiltins py rce          | Easy | repl |
+| OSON |           | Easy | zfernm |

@@ -1,3 +1,0 @@
-black = ['_', '"', '[', ']','%','%25','self','base','config', 'mro', ',', 'join', 'application', 'read', 'os', 'popen', 'txt', "init", "subprocess", "config", "update", "subclasses", "class", "+", "getitem", "globals", "import", "builtins", "attr", "render_template"]
-
-black2 = ['_', '"', '[', ']','%','%25','self','base','config', 'mro', ',', 'join', 'application', 'read', 'os', 'popen', 'txt', "init", "subprocess", "config", "update", "subclasses", "class", "+", "request", "getitem", "globals", "import", "builtins", "render_template"]

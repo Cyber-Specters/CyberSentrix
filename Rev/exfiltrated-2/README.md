@@ -13,6 +13,12 @@ Reverse Engineering
 ## Flag:
 `NEXUS{exfiltrated_flag_90ae31ff45de}`
 
+## PoC
+- the exe read folder content
+- split into 1024 byte chunks
+- encrypt with RC4 key "helloworld"
+- sent using icmp protocol
+
 ## Points:
 500
 

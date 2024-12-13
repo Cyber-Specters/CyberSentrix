@@ -13,6 +13,11 @@ Forensic
 ## Flag:
 `NEXUS{ampun_bang_saya_takut_pcap_asli}`
 
+## PoC:
+- story in hex (compiled as zlib)
+- converted into HID data
+- sent as using ICMP protocol
+  
 ## Points:
 500
 

@@ -1,0 +1,9 @@
+version: "3.8"
+
+services:
+  web-servsidetemp-zfernm:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "2911:5100"

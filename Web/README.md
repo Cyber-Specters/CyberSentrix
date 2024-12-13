@@ -9,3 +9,5 @@ Web challenges focus on exploiting or understanding web applications and service
 | JSHeadache | 1-click xss, SSRF, RNG, url-sceme          | Medium | repl |
 | WarmupHeadache | self src xss          | Easy | repl |
 | GOHeadache | dns rebinding,logic parsing           | Easy | repl |
+| ServSide | SSTI           | Easy | zfernm |
+| ServSideTemp | dns SSTI           | Easy | zfernm |

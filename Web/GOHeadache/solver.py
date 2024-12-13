@@ -1,6 +1,6 @@
 import httpx
 
-URL = "http://127.0.0.1:3000/v1"
+URL = "http://128.199.111.38:9101/v1"
 
 class BaseAPI:
     def __init__(self, url=URL) -> None:
@@ -45,7 +45,7 @@ class BaseAPI:
             pass
             
         return self.access_token
-    def verify(self, payload_dns_rebinding="ac130003.c0a80001.rbndr.us"):
+    def verify(self, payload_dns_rebinding="ac150003.c0a80001.rbndr.us"):
         while True:
             r = self.c.post('/auth/verify-email', data={'refferal': payload_dns_rebinding},headers={
                 "Authorization": f"Bearer {self.access_token}"

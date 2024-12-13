@@ -9,7 +9,7 @@ const DEFAULT_END = "IHDR";
 const app = express();
 app.use(realip.mw());
 const port = process.env.PORT || 3001;
-const FLAG = process.env.FLAG_STATIC || "FLAG{EASY_CHALL_FAKEFLAG}";
+const FLAG = process.env.FLAG || "FLAG{EASY_CHALL_FAKEFLAG}";
 const dataUri = generateSync(FLAG, {
   maxWidth: 220,
   customHeight: 220,
@@ -18,7 +18,7 @@ const dataUri = generateSync(FLAG, {
   verticalAlign: "center",
 });
 
-const AUTHORIZED_IP = process.env.AUTHORIZED_IP || "::ffff:127.0.0.1"; // the authorized ip is the WA BOT IP
+const AUTHORIZED_IP = process.env.AUTHORIZED_IP || "::ffff:127.0.0.1";
 
 function startToEnd(stORend) {
   var my_pleasure = "";
@@ -62,7 +62,7 @@ function genFlag(start, end) {
     fs.writeFile(tmpFile, buffer, (err) => {
       if (err) {
         console.error("Error write idk why tho : ", err);
-      } 
+      }
     });
   } catch (error) {
     console.error("Error processing buffer:", error.message);
@@ -77,14 +77,12 @@ app.get("/render", (req, res) => {
   if (realclientIp === AUTHORIZED_IP) {
     ctyp = req.query.ct;
   }
-  let realclientip = req.headers['x-forwarded-for']
-  ? req.headers['x-forwarded-for'].split(',')[0].trim()
-  : req.socket.remoteAddress;
+  realclientip = req.socket.remoteAddress;
   if (realclientip !== AUTHORIZED_IP) {
     console.log(realclientip);
     res.status(401).send("Unauthorized");
     return;
-  } 
+  }
   const download = req.query.download;
 
   if (download === "true") {

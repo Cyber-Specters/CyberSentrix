@@ -10,4 +10,5 @@ Web challenges focus on exploiting or understanding web applications and service
 | WarmupHeadache | self src xss          | Easy | repl |
 | GOHeadache | dns rebinding,logic parsing           | Easy | repl |
 | ServSide | SSTI           | Easy | zfernm |
-| ServSideTemp | dns SSTI           | Easy | zfernm |
+| ServSideTemp | SSTI           | Easy | zfernm |
+| RevengeRustyGoHeadache | CHROMEDRIVER + DNS REBINDING +    | Medium-hard | repl |

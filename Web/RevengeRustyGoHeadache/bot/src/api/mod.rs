@@ -5,6 +5,10 @@ use axum::{routing::get, Router};
 use tracing::{debug, info};
 
 mod router;
+pub mod types;
+mod util;
+mod middleware;
+// mod services;
 
 pub struct Api;
 
@@ -22,7 +26,8 @@ impl Api {
         .nest("/v1", router::app())
         .route("/", get(hello_world));
         let listener = tokio::net::TcpListener::bind(addr).await.unwrap();
-        axum::serve(listener, router)
+        axum::serve(listener, 
+            router.into_make_service_with_connect_info::<SocketAddr>())
             .with_graceful_shutdown(Self::shutdown_signal())
             .await
             .context("error while starting API server")

@@ -1,3 +1,5 @@
+use clap::Parser;
+
 #[derive(clap::ValueEnum, Clone, Debug, Copy)]
 pub enum CargoEnv {
     Development,
@@ -11,5 +13,14 @@ pub struct ApiConfig {
     #[clap(long, env, default_value = "6969")]
     pub bot_port: u16,
     #[clap(long, env, default_value = "3000")]
-    pub port: u16
+    pub port: u16,
+    #[clap(long, env)]
+    pub jwt_secret_key:String,
+    #[clap(long, env, default_value = "3000")]
+    pub jwt_expired: i64,
+    #[clap(long, env, default_value = "./database.db")]
+    pub database_file: String,
+    #[clap(long, env)]
+    pub run_migrations: bool
 }
+

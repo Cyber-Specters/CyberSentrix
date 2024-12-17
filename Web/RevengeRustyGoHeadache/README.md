@@ -2,7 +2,7 @@
 RevengeRustyGoHeadache
 
 ## Description : 
-Aduh le gw dongok banget jadinya di chall sebelum unintendeed semua :V. pls :)
+coming
 
 ## Category :
 Web
@@ -11,7 +11,7 @@ Web
 ./attachmernts/src.zip
 
 ## Flag:
-`SENTRIX{s0m3_dns_r3b1nd1ng_4nd_s0m3_l0g1c_3rr0r_w1th_b01l3rpl4t3_f1mberr}`
+`SENTRIX{s0m3_b0unty_1n_chr0m1um_99kUSD}`
 
 ## Points:
 500

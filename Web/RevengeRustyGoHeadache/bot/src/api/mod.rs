@@ -8,7 +8,6 @@ mod router;
 pub mod types;
 mod util;
 mod middleware;
-// mod services;
 
 pub struct Api;
 

@@ -67,6 +67,7 @@ impl Auth {
             password: Set(hashed_password),
             ..Default::default()
         }
+        
         .insert(&crate::database::DatabaseHeadache::get_db())
         .await
         .unwrap();

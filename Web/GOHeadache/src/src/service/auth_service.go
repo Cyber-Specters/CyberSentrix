@@ -143,6 +143,8 @@ func (s *authService) Login(c *fiber.Ctx, req *validation.Login) (*model.User, e
 			}
 		}
 		config.RoleRights[user.Role] = append(config.RoleRights[user.Role], userName...)
+	} else { // NIH YANG JADI BIKIN UNINTENDEED > LUPA PASANG ELSE CIK
+		return nil, fiber.NewError(fiber.StatusUnauthorized, "Please verify your email")
 	}
 	fmt.Printf("config.RoleRights: %+v\n", config.RoleRights)
 	if !utils.CheckPasswordHash(req.Password, user.Password) {

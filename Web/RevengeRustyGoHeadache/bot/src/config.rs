@@ -15,6 +15,8 @@ pub struct ApiConfig {
     #[clap(long, env, default_value = "3000")]
     pub port: u16,
     #[clap(long, env)]
+    pub admin_email:String,
+    #[clap(long, env)]
     pub jwt_secret_key:String,
     #[clap(long, env, default_value = "3000")]
     pub jwt_expired: i64,
@@ -24,3 +26,8 @@ pub struct ApiConfig {
     pub run_migrations: bool
 }
 
+impl ApiConfig {
+    pub fn get_cfg() -> Self {
+        ApiConfig::parse()
+    }
+}

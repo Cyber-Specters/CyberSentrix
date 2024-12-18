@@ -1,4 +1,3 @@
-use std::borrow::Borrow;
 
 use serde::{Deserialize, Serialize};
 use validator::Validate;

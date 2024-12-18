@@ -7,7 +7,7 @@ use tracing::{debug, info};
 mod router;
 pub mod types;
 mod util;
-mod middleware;
+pub mod middleware;
 
 pub struct Api;
 

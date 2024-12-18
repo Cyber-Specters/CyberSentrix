@@ -1,7 +1,7 @@
-use sea_orm::{sea_query::Table, ConnectionTrait, DbConn, EntityTrait, Schema, Statement};
+use sea_orm::{ConnectionTrait, DbConn, EntityTrait, Schema, Statement};
 use tracing::{error, info};
 
-use crate::{api, config, user};
+use crate::user::{self};
 
 macro_rules! create_tables {
     ($db:expr, $($entity:expr),*) => {
@@ -31,6 +31,8 @@ where
         }
     }
 }
+
+
 
 
 pub async fn migrate(db: &DbConn) {

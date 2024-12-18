@@ -6,7 +6,7 @@ mod assets;
 mod config; 
 pub mod api;   
 pub mod database;
-mod entity;
+pub mod entity;
 mod log;
 
 use config::ApiConfig;
@@ -37,11 +37,6 @@ async fn main() -> anyhow::Result<()> {
         .expect("could not initialize the database connection pool");
 
     api::Api::run(config.clone()).await?;
-    // let client = ClientBuilder::native()
-    //     .connect(&format!("http://localhost:{}", config.bot_port))
-    //     .await
-    //     .expect("Failed to connect");
-    // client.goto("https://www.rust-lang.org/").await.expect("failed to open");
-    // client.close().await.expect("failed to close");
+
     Ok(())
 }

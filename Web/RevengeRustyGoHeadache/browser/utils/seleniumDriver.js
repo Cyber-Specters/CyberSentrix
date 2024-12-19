@@ -6,15 +6,21 @@ const { isSSRFSafeURL } = require('ssrfcheck');
 const { localUrl, remoteDebuggingPort, seleniumOptions } = require('../config/appConfig');
 
 async function setupWebDriver() {
+  const service = new chrome.ServiceBuilder()
+    .setPort(6969)
+    // .build();
+  // await service.start()
   const options = new chrome.Options();
   options.addArguments(`--remote-debugging-port=${remoteDebuggingPort}`);
   seleniumOptions.forEach(option => options.addArguments(option));
-
   return new Builder()
-    .forBrowser(Browser.CHROME)
+    .forBrowser('chrome')
     .setChromeOptions(options)
+    .setChromeService(service)
+    // .usingServer(service) 
     .build();
 }
+
 
 function sleep(seconds) {
   return new Promise(resolve => setTimeout(resolve, seconds * 1000)); 

@@ -35,13 +35,12 @@ impl Admin {
             })?
             .ok_or_else(|| Error::NotFound("User not found".to_string()))?;
         if user.email != config::ApiConfig::parse().admin_email {
-            return Err(Error::AnyhowError(anyhow::anyhow!("Not admin")));
-        }
-        // check chromdriver port 
+            return Err(Error::AnyhowError(anyhow::anyhow!("Not an admin")));
+        } 
         let client: Result<fantoccini::Client, fantoccini::error::NewSessionError> = ClientBuilder::native()
             .connect(&format!("http://localhost:{}", config::ApiConfig::parse().bot_port))
             .await;
-            
+        
         if client.is_err() {
             return Err(Error::AnyhowError(anyhow::anyhow!("Failed to connect to bot")));
         }

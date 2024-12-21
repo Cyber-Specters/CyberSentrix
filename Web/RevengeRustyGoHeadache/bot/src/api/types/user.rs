@@ -29,6 +29,11 @@ pub struct LoginRequest {
     pub password: String,
 }
 
+#[derive(Clone, Debug, Serialize, Deserialize, Validate)]
+pub struct AdminReq {
+    pub status_sc: String,
+
+}
 
 #[derive(Serialize, Deserialize, Default, Debug)]
 pub struct User {

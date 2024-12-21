@@ -8,28 +8,24 @@ const { localUrl, remoteDebuggingPort, seleniumOptions } = require('../config/ap
 async function setupWebDriver() {
   const service = new chrome.ServiceBuilder()
     .setPort(6969)
-    // .build();
-  // await service.start()
+  
   const options = new chrome.Options();
   options.addArguments(`--remote-debugging-port=${remoteDebuggingPort}`);
+  options.addArguments(`--remote-debugging-address=127.0.0.1`);
   seleniumOptions.forEach(option => options.addArguments(option));
   return new Builder()
     .forBrowser('chrome')
     .setChromeOptions(options)
     .setChromeService(service)
-    // .usingServer(service) 
     .build();
 }
 
 
-function sleep(seconds) {
-  return new Promise(resolve => setTimeout(resolve, seconds * 1000)); 
-}
 
 async function navigateToPage(driver, url) {
   console.log(`Navigating to: ${url}`);
   await driver.get(url);
-  await sleep(10);
+  await driver.sleep(2000);
   console.log('Page loaded successfully.');
   updateHealthCheck('ok');
 }
@@ -43,16 +39,20 @@ async function bot() {
     await checkUrlSecurity(url);
 
     driver = await setupWebDriver();
-    await navigateToPage(driver, url);
+    if (driver) {
+      await navigateToPage(driver, url);
+
+    }
     console.log('Closing WebDriver session after page is loaded.');
-    await driver.quit();
   } catch (error) {
     updateHealthCheck('fail');
-    console.error('Error:', error.message);
+    console.error('Error:', error);
+  } finally {
+    if (driver) {
+      await driver.quit();
+    }
   }
-  if (driver) {
-    await driver.quit();
-  }
+
 }
 
 function validateUrl(url) {
@@ -64,9 +64,11 @@ function validateUrl(url) {
 }
 
 async function checkUrlSecurity(url) {
-  if (!isSSRFSafeURL(url)) {
-    updateHealthCheck('fail');
-    new Error(`URL "${url}" is not safe for SSRF.`);
+  if (process.env.DEBUG != "true"){
+    if (!isSSRFSafeURL(url)) {
+      updateHealthCheck('fail');
+      throw new Error(`URL "${url}" is not safe for SSRF.`);
+    }
   }
   const response = await axios.get(url, { timeout: 5000 });
   const hostHeader = response.request.getHeaders().host;

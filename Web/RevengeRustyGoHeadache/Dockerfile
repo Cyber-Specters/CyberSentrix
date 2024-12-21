@@ -49,5 +49,6 @@ COPY --from=builder /bot/target/x86_64-unknown-linux-gnu/release/bot /bot/
 
 RUN chmod +x bot
 
+COPY flag.txt /
 
 CMD ["/bot/bot"]

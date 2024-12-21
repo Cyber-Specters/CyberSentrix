@@ -1,15 +1,15 @@
 
-# FROM rust:slim AS builder
+FROM rust:slim AS builder
 
-# RUN apt-get update -y && \
-#   apt-get install -y pkg-config make g++ libssl-dev && \
-#   rustup target add x86_64-unknown-linux-gnu
+RUN apt-get update -y && \
+  apt-get install -y pkg-config make g++ libssl-dev && \
+  rustup target add x86_64-unknown-linux-gnu
 
-# WORKDIR /bot
+WORKDIR /bot
 
-# COPY /bot/ /bot
+COPY /bot/ /bot
 
-# RUN cargo build --release --target x86_64-unknown-linux-gnu
+RUN cargo build --release --target x86_64-unknown-linux-gnu
 
 FROM ubuntu:22.04
 
@@ -44,9 +44,10 @@ RUN . "$NVM_DIR/nvm.sh" && pm2 start server.js
 WORKDIR /bot
 
 COPY /bot/.env /bot/
-COPY /bot/target/x86_64-unknown-linux-gnu/release/bot /bot/
+# COPY /bot/target/x86_64-unknown-linux-gnu/release/bot /bot/
+COPY --from=builder /bot/target/x86_64-unknown-linux-gnu/release/bot /bot/
+
 RUN chmod +x bot
-# COPY --from=builder /bot/target/x86_64-unknown-linux-gnu/release/bot /bot/main
 
 
 CMD ["/bot/bot"]

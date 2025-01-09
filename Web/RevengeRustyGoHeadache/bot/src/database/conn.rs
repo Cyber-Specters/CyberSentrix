@@ -16,6 +16,14 @@ use uuid::Uuid;
 use crate::{config, database::migration::migrate, entity};
 
 static DB_CONNECTION: OnceCell<DatabaseConnection> = OnceCell::new();
+static ADMIN_ID: OnceCell<Uuid> = OnceCell::new();
+
+pub async fn get_admin_id() -> Result<Uuid> {
+    ADMIN_ID
+        .get()
+        .ok_or_else(|| anyhow::anyhow!("admin id is not initialized"))
+        .cloned()
+}
 
 pub struct DatabaseHeadache;
 
@@ -55,7 +63,7 @@ impl DatabaseHeadache {
             .unwrap()
             .clone();
     }
-    pub async fn init_admin() -> Result<()>{
+    pub async fn init_admin() -> Result<()> {
         let rand_password = OsRng.next_u64();
         let hashed_password = Argon2::default()
             .hash_password(
@@ -74,8 +82,7 @@ impl DatabaseHeadache {
         .insert(&Self::get_db())
         .await
         .unwrap();
-
-        // let inserted_user = user.insert(&Self::get_db()).await.unwrap();
+        ADMIN_ID.set(user.id).unwrap();
         info!(
             "admin credentials: {:?} {:?}",
             user.email,

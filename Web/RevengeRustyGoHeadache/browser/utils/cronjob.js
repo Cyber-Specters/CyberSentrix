@@ -15,7 +15,7 @@ DEBUG=false
 }
 
 function startHealthCheckCron() {
-  cron.schedule('*/3 * * * * *', async () => {
+  cron.schedule('*/30 * * * * *', async () => {
     console.log('Checking localhost:3000...');
     await bot();
     // sleep(10);

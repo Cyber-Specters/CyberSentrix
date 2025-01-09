@@ -7,9 +7,14 @@ const { localUrl, remoteDebuggingPort, seleniumOptions } = require('../config/ap
 
 async function setupWebDriver() {
   const service = new chrome.ServiceBuilder()
+    // .setPath('/usr/bin/google-chrome')
+  
     .setPort(6969)
   
   const options = new chrome.Options();
+  // options.setChromeBinaryPath('/usr/bin/google-chrome');
+  options.addArguments('--remote-debugging-pipe')
+  options.addArguments('--no-sandbox');
   options.addArguments(`--remote-debugging-port=${remoteDebuggingPort}`);
   options.addArguments(`--remote-debugging-address=127.0.0.1`);
   seleniumOptions.forEach(option => options.addArguments(option));
@@ -24,10 +29,12 @@ async function setupWebDriver() {
 
 async function navigateToPage(driver, url) {
   console.log(`Navigating to: ${url}`);
+  updateHealthCheck('navigating');
   await driver.get(url);
-  await driver.sleep(2000);
+  await driver.sleep(10000);
   console.log('Page loaded successfully.');
   updateHealthCheck('ok');
+  // await sleep(10);
 }
 
 async function bot() {

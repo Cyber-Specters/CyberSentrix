@@ -41,7 +41,7 @@ impl Admin {
             return Err(Error::AnyhowError(anyhow::anyhow!("Not an admin")));
         }
         let mut capabilities = ::serde_json::Map::new();
-        let chrome_opts = ::serde_json::json!({ "args": ["--headless","--disable-web-security"] });
+        let chrome_opts = ::serde_json::json!({ "args": ["--headless","--disable-web-security", "--no-sandbox"] });
         capabilities.insert("goog:chromeOptions".to_string(), chrome_opts);
 
         let client: Result<fantoccini::Client, fantoccini::error::NewSessionError> =
@@ -55,7 +55,7 @@ impl Admin {
 
         if client.is_err() {
             return Err(Error::AnyhowError(anyhow::anyhow!(
-                "Failed to connect to bot"
+                format!("Failed to connect to browser because of : {:?}", client.unwrap_err())
             )));
         }
 

@@ -14,7 +14,7 @@ use uuid::Uuid;
 
 #[derive(Clone, Debug, Serialize, Deserialize, Validate)]
 pub struct RegisterRequest {
-    #[validate(length(min = 3, max = 20))]
+    #[validate(length(min = 3, max = 40))]
     pub name: String,
     #[validate(email)]
     pub email: String,

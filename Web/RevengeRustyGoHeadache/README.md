@@ -11,7 +11,7 @@ Web
 ./attachmernts/src.zip
 
 ## Flag:
-`SENTRIX{s0m3_b0unty_1n_chr0m1um_99kUSD}`
+`SENTRIX{y3yy_c0ngr4ts_pl4y1ng_w1th_th3_dr1v3r}`
 
 ## Points:
 500
